@@ -14,7 +14,7 @@ public class SetupRecipe {
   //test if i can create a recipe with a user without using any relations functions.
   public static void main(String[] args) {
 
-  test2();
+  test();
   }
   public static void test() {
 
