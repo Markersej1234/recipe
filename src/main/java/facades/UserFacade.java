@@ -1,5 +1,7 @@
 package facades;
 
+import dtos.RecipeDTO;
+import entities.Recipe;
 import entities.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,6 +23,10 @@ public class UserFacade {
 
     private UserFacade() {
     }
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
     /**
      *
      * @param _emf
@@ -126,5 +132,14 @@ public class UserFacade {
         return user;
     }
 
+    public List<RecipeDTO> getReacipesByUsername(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r WHERE r.user.userName = :name", Recipe.class);
+        query.setParameter("name", name);
+        List<Recipe> recipes = query.getResultList();
+        List<RecipeDTO> recipeDTOS = RecipeDTO.getDtos(recipes);
+        em.close();
+        return recipeDTOS;
+    }
 
 }
