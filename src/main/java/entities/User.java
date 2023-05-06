@@ -34,7 +34,13 @@ public class User implements Serializable {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
   private List<Recipe> recipes;
 
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  private List<Review> reviews;
+
+
+
   public User() {}
+
   public User(String userName, String userPass) {
     this.userName = userName;
     this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
@@ -78,14 +84,17 @@ public class User implements Serializable {
   public void addRole(Role userRole) {
     roleList.add(userRole);
   }
+  public List<Review> getReviews() { return reviews; }
+  public void setReviews(List<Review> reviews) { this.reviews = reviews; }
 
   @Override
   public String toString() {
-    return "User{" +
+    return "User {" +
             "userName='" + userName + '\'' +
             ", userPass='" + userPass + '\'' +
             ", roleList=" + roleList +
             ", recipes=" + recipes +
+            ", reviews=" + reviews +
             '}';
   }
 }
