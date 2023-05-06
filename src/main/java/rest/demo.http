@@ -17,10 +17,10 @@ GET http://localhost:8080/recipe_war_exploded/api/recipe/1
 
 
 ###
-POST http://localhost:8080/recipe_war_exploded/api/login
+POST http://localhost:8080/recipe_war_exploded/api/review/createReview
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "test123"
+  "description": "mad"
 }
+

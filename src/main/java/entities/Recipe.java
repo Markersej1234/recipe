@@ -30,6 +30,14 @@ public class Recipe {
         this.user = user;
     }
 
+    @GET
+    @Path("/subject/{name}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getSubjectByName(@PathParam("name") String name) throws EntityNotFoundException {
+        return Response.ok().entity(GSON.toJson(FACADE.getSubjects(name))).build();
+    }
+
+
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
