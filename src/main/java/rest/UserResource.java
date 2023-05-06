@@ -12,6 +12,7 @@ import facades.UserFacade;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,5 +43,11 @@ public class UserResource {
         return Response.ok().entity(GSON.toJson(userDTO)).build();
     }
 
+    @GET
+    @Path("/reaipes/{name}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getReacipesByUsername(@PathParam("name") String name) throws EntityNotFoundException {
+        return Response.ok().entity(GSON.toJson(userFacade.getReacipesByUsername(name))).build();
+    }
 
 }
