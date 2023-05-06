@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewDTO {
-    public long id;
-    public String name;
-    public String description;
-    public String userName;
-    public RecipeDTO recipe;
+    private long id;
+    private String name;
+    private String description;
+    private String userName;
+    private RecipeDTO recipe;
 
 
     public ReviewDTO() {
@@ -38,7 +38,7 @@ public class ReviewDTO {
         rms.forEach(rm -> rmdtos.add(new ReviewDTO(rm)));
         return rmdtos;
     }
-    
+
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
