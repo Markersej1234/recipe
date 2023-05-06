@@ -132,7 +132,7 @@ public class UserFacade {
         return user;
     }
 
-    public List<RecipeDTO> getReacipesByUsername(String name){
+    public List<RecipeDTO> getRecipesByUsername(String name){
         EntityManager em = getEntityManager();
         TypedQuery<Recipe> query = em.createQuery("SELECT r FROM Recipe r WHERE r.user.userName = :name", Recipe.class);
         query.setParameter("name", name);

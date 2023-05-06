@@ -44,10 +44,10 @@ public class UserResource {
     }
 
     @GET
-    @Path("/reaipes/{name}")
+    @Path("/recipe/{name}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getReacipesByUsername(@PathParam("name") String name) throws EntityNotFoundException {
-        return Response.ok().entity(GSON.toJson(userFacade.getReacipesByUsername(name))).build();
+    public Response getRecipesByUsername(@PathParam("name") String name) throws EntityNotFoundException {
+        return Response.ok().entity(GSON.toJson(userFacade.getRecipesByUsername(name))).build();
     }
 
 }

@@ -1,6 +1,12 @@
 package entities;
 
 import javax.persistence.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Table(name = "recipe")
 @Entity
@@ -30,12 +36,6 @@ public class Recipe {
         this.user = user;
     }
 
-    @GET
-    @Path("/subject/{name}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response getSubjectByName(@PathParam("name") String name) throws EntityNotFoundException {
-        return Response.ok().entity(GSON.toJson(FACADE.getSubjects(name))).build();
-    }
 
 
 
