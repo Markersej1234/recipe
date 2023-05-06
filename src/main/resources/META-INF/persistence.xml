@@ -6,6 +6,7 @@
         <class>entities.Recipe</class>
         <class>entities.Ingredient</class>
         <class>entities.Category</class>
+        <class>entities.Instruction</class>
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <!--    <class>entities.RenameMe</class>-->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>

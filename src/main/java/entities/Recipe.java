@@ -1,12 +1,6 @@
 package entities;
 
 import javax.persistence.*;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +26,13 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();
 
+
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Instruction> instructions = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
-
 
     public Recipe() {
     }
@@ -54,9 +50,16 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Recipe(String name, String description, User user, List<Ingredient> ingredients, List<Instruction> instructions, Category category) {
+        this.name = name;
+        this.description = description;
+        this.user = user;
+        this.ingredients = ingredients;
+        this.category = category;
+        this.instructions = instructions;
+    }
 
-
-//getters and setters
+    //getters and setters
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public Long getId() { return id; }
