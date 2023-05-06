@@ -7,6 +7,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "recipe")
 @Entity
@@ -27,6 +29,10 @@ public class Recipe {
     @JoinColumn(name = "user_name")
     private User user;
 
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ingredient> ingredients = new ArrayList<>();
+
+
     public Recipe() {
     }
 
@@ -36,9 +42,18 @@ public class Recipe {
         this.user = user;
     }
 
+    public Recipe(String name, String description, User user, List<Ingredient> ingredients) {
+        this.name = name;
+        this.description = description;
+        this.user = user;
+        this.ingredients = ingredients;
+    }
 
 
 
+//getters and setters
+    public List<Ingredient> getIngredients() { return ingredients; }
+    public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }

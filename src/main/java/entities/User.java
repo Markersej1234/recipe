@@ -34,9 +34,6 @@ public class User implements Serializable {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
   private List<Recipe> recipes;
 
-
-
-
   public User() {}
   public User(String userName, String userPass) {
     this.userName = userName;
