@@ -23,8 +23,8 @@ public class Recipe {
     @JoinColumn(name = "user_name")
     private User user;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ingredient> ingredients = new ArrayList<>();
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    private List<Ingredient> ingredients;
 
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -41,22 +41,21 @@ public class Recipe {
         this.name = name;
         this.description = description;
         this.user = user;
-    }
 
+    }
     public Recipe(String name, String description, User user, List<Ingredient> ingredients) {
         this.name = name;
         this.description = description;
         this.user = user;
         this.ingredients = ingredients;
+
     }
 
-    public Recipe(String name, String description, User user, List<Ingredient> ingredients, List<Instruction> instructions, Category category) {
-        this.name = name;
-        this.description = description;
-        this.user = user;
-        this.ingredients = ingredients;
-        this.category = category;
-        this.instructions = instructions;
+    
+
+    public void addIngredient(Ingredient ingredient){
+        this.ingredients.add(ingredient);
+        ingredient.setRecipe(this);
     }
 
     //getters and setters

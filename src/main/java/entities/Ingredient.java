@@ -20,6 +20,7 @@ public class Ingredient {
     private String measurementUnit;
 
     @ManyToOne
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
 
