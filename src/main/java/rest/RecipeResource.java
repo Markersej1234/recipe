@@ -3,6 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.RecipeDTO;
+import dtos.ReviewDTO;
 import entities.Recipe;
 import entities.User;
 import errorhandling.NotFoundException;
@@ -54,6 +55,14 @@ public class RecipeResource {
     public Response getPersonById(@PathParam("id") Long id) throws NotFoundException {
         RecipeDTO recipeDTO = recipeFacade.getRecipeById(id);
         return Response.ok().entity(GSON.toJson(recipeDTO)).build();
+    }
+
+    @GET
+    @Path("all")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAll() {
+        List<RecipeDTO> rns = recipeFacade.getAllRecipes();
+        return Response.ok().entity(GSON.toJson(rns)).build();
     }
 
 
