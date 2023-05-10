@@ -27,3 +27,53 @@ Content-Type: application/json
 
 ###
 GET http://localhost:8080/recipe_war_exploded/api/user/reipes/user
+
+
+###
+POST http://localhost:8080/opskrift_solo_war_exploded/api/recipe/create
+Content-Type: application/json
+
+{
+  "name": "dahl",
+  "description": "linser og krydderier",
+  "userName": "user",
+  "ingredients": [
+    {
+      "name": "linser",
+      "quantity": 1.5,
+      "measurementUnit": "kg"
+    },
+
+    {
+      "name": "gurkemeje",
+      "quantity": 1,
+      "measurementUnit": "tsk"
+    }
+
+  ]
+}
+
+
+###
+POST http://localhost:8080/opskrift_solo_war_exploded/api/recipe/create
+Content-Type: application/json
+
+{
+  "name": "dahl",
+  "description": "linser og krydderier",
+  "userName": "user",
+  "ingredients": []
+}
+
+
+
+
+###
+POST http://localhost:8080/opskrift_solo_war_exploded/api/recipe/addNewIngredient/1
+Content-Type: application/json
+
+{
+  "name": "æg",
+  "quantity": "2.0",
+  "measurementUnit": "Pcs"
+}

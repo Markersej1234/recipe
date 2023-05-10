@@ -20,24 +20,23 @@ public class Ingredient {
     private String measurementUnit;
 
     @ManyToOne
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
 
     public Ingredient() {
     }
 
-    public Ingredient(String name, Double quantity, String measurementUnit, Recipe recipe) {
+    public Ingredient(String name, Double quantity, String measurementUnit) {
         this.name = name;
         this.quantity = quantity;
         this.measurementUnit = measurementUnit;
-        this.recipe = recipe;
     }
 
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

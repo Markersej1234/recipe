@@ -2,6 +2,7 @@ package facades;
 
 import dtos.RecipeDTO;
 import dtos.RenameMeDTO;
+import entities.Ingredient;
 import entities.Recipe;
 import entities.RenameMe;
 import entities.User;
@@ -98,5 +99,22 @@ public class RecipeFacade {
             throw new IllegalArgumentException("No recipe with provided id found");
         }
         return new RecipeDTO(recipe);
+    }
+
+    public Recipe addNewIngredientToRecipe(Long recipeId, Ingredient ingredient){
+        EntityManager em = emf.createEntityManager();
+        Recipe recipe = em.find(Recipe.class, recipeId);
+        if (recipe == null) {
+            throw new IllegalArgumentException("No recipe with provided id found");
+        }
+        try {
+            em.getTransaction().begin();
+            recipe.addIngredient(ingredient);
+            em.persist(ingredient);
+            em.getTransaction().commit();
+            return recipe;
+        } finally {
+            em.close();
+        }
     }
 }
