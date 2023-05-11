@@ -6,7 +6,6 @@
 package dtos;
 
 import entities.Ingredient;
-import entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,9 @@ public class IngredientDTO {
         this.name = name;
         this.quantity = quantity;
         this.measurementUnit = measurementUnit;
+    }
 
+    public IngredientDTO() {
     }
 
     public IngredientDTO(Ingredient i){
@@ -35,6 +36,12 @@ public class IngredientDTO {
         this.name = i.getName();
         this.quantity = i.getQuantity();
         this.measurementUnit = i.getMeasurementUnit();
+    }
+
+    public static List<IngredientDTO> getDtos(List<Ingredient> ingredients) {
+        List<IngredientDTO> rmdtos = new ArrayList();
+        ingredients.forEach(re -> rmdtos.add(new IngredientDTO(re)));
+        return rmdtos;
     }
 
     public Long getId() {

@@ -2,7 +2,7 @@ package entities;
 
 import javax.persistence.*;
 
-@Table(name = "ingredience")
+@Table(name = "ingredient")
 @Entity
 public class Ingredient {
 

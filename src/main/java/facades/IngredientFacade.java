@@ -1,7 +1,10 @@
 package facades;
 
+import dtos.IngredientDTO;
+import dtos.InstructionDTO;
 import dtos.RenameMeDTO;
 import entities.Ingredient;
+import entities.Instruction;
 import entities.RenameMe;
 import errorhandling.NotFoundException;
 import utils.EMF_Creator;
@@ -30,6 +33,13 @@ public class IngredientFacade {
             instance = new IngredientFacade();
         }
         return instance;
+    }
+
+    public List<IngredientDTO> getAllIngredients(){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Ingredient> query = em.createQuery("SELECT i FROM Ingredient i", Ingredient.class);
+        List<Ingredient> rms = query.getResultList();
+        return IngredientDTO.getDtos(rms);
     }
 
     private EntityManager getEntityManager() {
