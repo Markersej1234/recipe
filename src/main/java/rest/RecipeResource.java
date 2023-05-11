@@ -48,11 +48,7 @@ public class RecipeResource {
         User user = userFacade.getUserByName(dto.getUserName());
         List<Ingredient> ingredients = new ArrayList<>();
         for (IngredientDTO ingredientDTO : dto.getIngredients()) {
-            ingredients.add(new Ingredient(
-                    ingredientDTO.getName(),
-                    ingredientDTO.getQuantity(),
-                    ingredientDTO.getMeasurementUnit()
-            ));
+            ingredients.add(new Ingredient(ingredientDTO.getName()));
         }
         Recipe temp = new Recipe(dto.getName(), dto.getDescription(), user, ingredients);
         Recipe created = recipeFacade.create(temp);
@@ -78,10 +74,7 @@ public class RecipeResource {
     @Consumes({MediaType.APPLICATION_JSON})
     public Response addNewIngredient(@PathParam("id") Long id, String jsonContext) {
         IngredientDTO ingredientDTO = GSON.fromJson(jsonContext, IngredientDTO.class);
-        Ingredient ingredient = new Ingredient(
-                ingredientDTO.getName(),
-                ingredientDTO.getQuantity(),
-                ingredientDTO.getMeasurementUnit());
+        Ingredient ingredient = new Ingredient(ingredientDTO.getName());
 
 
         Recipe updated = recipeFacade.addNewIngredientToRecipe(id, ingredient);
@@ -96,6 +89,28 @@ public class RecipeResource {
         List<RecipeDTO> rns = recipeFacade.getAllRecipes();
         return Response.ok().entity(GSON.toJson(rns)).build();
     }
+    @Path("create2")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response create2(String jsonContext) throws NotFoundException {
+        RecipeDTO dto = GSON.fromJson(jsonContext, RecipeDTO.class);
+        User user = userFacade.getUserByName(dto.getUserName());
+        List<Ingredient> ingredients = new ArrayList<>();
+        for (IngredientDTO ingredientDTO : dto.getIngredients()) {
+            ingredients.add(new Ingredient(ingredientDTO.getName()));
+        }
+        Recipe temp = new Recipe(dto.getName(), dto.getDescription(), user, ingredients);
+        Recipe created = recipeFacade.create(temp);
+
+        for (Ingredient i : created.getIngredients()) {
+            i.setRecipe(created); // This is needed to make the relationship work
+            ingredientFacade.update(i);
+        }
+        RecipeDTO recipeDTO = new RecipeDTO(created);
+        return Response.ok().entity(GSON.toJson(recipeDTO)).build();
+    }
+
 
 
 }

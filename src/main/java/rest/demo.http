@@ -77,3 +77,26 @@ Content-Type: application/json
   "quantity": "2.0",
   "measurementUnit": "Pcs"
 }
+
+###
+POST http://localhost:8080/opskrift_solo_war_exploded/api/recipe/create
+Content-Type: application/json
+
+{
+  "name": "dahl",
+  "description": "linser og krydderier",
+  "userName": "user",
+  "ingredients": [
+    {
+      "name": "ost"
+
+    },
+
+    {
+      "name": "salt"
+
+    }
+
+  ]
+
+}

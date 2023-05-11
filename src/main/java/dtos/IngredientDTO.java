@@ -17,15 +17,13 @@ import java.util.List;
 public class IngredientDTO {
     private Long id;
     private String name;
-    private Double quantity;
-    private String measurementUnit;
 
 
-    public IngredientDTO(String name, Double quantity, String measurementUnit) {
+
+    public IngredientDTO(String name) {
         this.name = name;
-        this.quantity = quantity;
-        this.measurementUnit = measurementUnit;
     }
+
 
     public IngredientDTO() {
     }
@@ -34,8 +32,6 @@ public class IngredientDTO {
         if (i.getId() != null)
             this.id = i.getId();
         this.name = i.getName();
-        this.quantity = i.getQuantity();
-        this.measurementUnit = i.getMeasurementUnit();
     }
 
     public static List<IngredientDTO> getDtos(List<Ingredient> ingredients) {
@@ -56,16 +52,5 @@ public class IngredientDTO {
     public void setName(String name) {
         this.name = name;
     }
-    public Double getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(Double quantity) {
-        this.quantity = quantity;
-    }
-    public String getMeasurementUnit() {
-        return measurementUnit;
-    }
-    public void setMeasurementUnit(String measurementUnit) {
-        this.measurementUnit = measurementUnit;
-    }
+
 }

@@ -33,6 +33,9 @@ public class Ingredient {
         this.measurementUnit = measurementUnit;
     }
 
+    public Ingredient(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

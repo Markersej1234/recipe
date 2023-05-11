@@ -10,7 +10,7 @@ public class ReviewDTO {
     private String name;
     private String description;
     private String userName;
-    private RecipeDTO recipe;
+
 
 
     public ReviewDTO() {
@@ -28,8 +28,7 @@ public class ReviewDTO {
         this.name = rm.getName();
         this.description = rm.getDescription();
         this.userName = rm.getUser().getUserName();
-        if (rm.getRecipe() != null)
-            this.recipe = new RecipeDTO(rm.getRecipe());
+
     }
 
 
