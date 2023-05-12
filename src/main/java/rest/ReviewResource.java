@@ -17,7 +17,6 @@ import java.util.List;
 public class ReviewResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-
     private static final ReviewFacade FACADE = ReviewFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 

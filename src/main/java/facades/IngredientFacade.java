@@ -62,4 +62,17 @@ public class IngredientFacade {
             em.close();
         }
     }
+
+    public IngredientDTO createIngredient(IngredientDTO ingredientDTO) {
+        Ingredient ingredient = new Ingredient(ingredientDTO.getName(), ingredientDTO.getQuantity(), ingredientDTO.getMeasurementUnit());
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(ingredient);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new IngredientDTO(ingredient);
+    }
 }

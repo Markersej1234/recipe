@@ -10,16 +10,15 @@ public class ReviewDTO {
     private String name;
     private String description;
     private String userName;
-    private RecipeDTO recipe;
 
 
     public ReviewDTO() {
     }
 
-    public ReviewDTO(String name, String description, String userName) {
+    public ReviewDTO(String name, String description) {
         this.name = name;
         this.description = description;
-        this.userName = userName;
+
     }
 
     public ReviewDTO(Review rm) {
@@ -27,9 +26,6 @@ public class ReviewDTO {
             this.id = rm.getId();
         this.name = rm.getName();
         this.description = rm.getDescription();
-        this.userName = rm.getUser().getUserName();
-        if (rm.getRecipe() != null)
-            this.recipe = new RecipeDTO(rm.getRecipe());
     }
 
 
@@ -41,5 +37,10 @@ public class ReviewDTO {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 }

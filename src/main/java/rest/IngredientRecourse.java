@@ -2,13 +2,12 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.IngredientDTO;
+import dtos.ReviewDTO;
 import facades.IngredientFacade;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -31,6 +30,17 @@ public class IngredientRecourse {
     public Response getAllIngredients() {
         List<IngredientDTO> rns = ingredientFacade.getAllIngredients();
         return Response.ok().entity(GSON.toJson(rns)).build();
+    }
+
+    @POST
+    @Path("create")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    //@RolesAllowed("user")
+    public Response createIngredient(IngredientDTO ingredientDTO) {
+        ingredientDTO = ingredientFacade.createIngredient(ingredientDTO);
+        return Response.ok().entity(GSON.toJson(ingredientDTO)).build();
+
     }
 
 
