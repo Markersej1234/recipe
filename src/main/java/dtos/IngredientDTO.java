@@ -17,6 +17,8 @@ import java.util.List;
 public class IngredientDTO {
     private Long id;
     private String name;
+    private double quantity;
+    private String measurementUnit;
 
 
 
@@ -53,4 +55,19 @@ public class IngredientDTO {
         this.name = name;
     }
 
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getMeasurementUnit() {
+        return measurementUnit;
+    }
+
+    public void setMeasurementUnit(String measurementUnit) {
+        this.measurementUnit = measurementUnit;
+    }
 }

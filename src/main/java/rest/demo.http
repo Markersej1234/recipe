@@ -65,6 +65,14 @@ Content-Type: application/json
   "ingredients": []
 }
 
+###
+POST http://localhost:8080/recipe_war_exploded/api/ingredient/create
+Content-Type: application/json
+
+{
+  "name": "banan"
+}
+
 
 
 
