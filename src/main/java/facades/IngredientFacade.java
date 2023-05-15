@@ -38,8 +38,8 @@ public class IngredientFacade {
     public List<IngredientDTO> getAllIngredients(){
         EntityManager em = emf.createEntityManager();
         TypedQuery<Ingredient> query = em.createQuery("SELECT i FROM Ingredient i", Ingredient.class);
-        List<Ingredient> rms = query.getResultList();
-        return IngredientDTO.getDtos(rms);
+        List<Ingredient> ingredients = query.getResultList();
+        return IngredientDTO.getDtos(ingredients);
     }
 
     private EntityManager getEntityManager() {

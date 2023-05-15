@@ -28,8 +28,8 @@ public class IngredientRecourse {
     @Path("all")
     @Produces({MediaType.APPLICATION_JSON})
     public Response getAllIngredients() {
-        List<IngredientDTO> rns = ingredientFacade.getAllIngredients();
-        return Response.ok().entity(GSON.toJson(rns)).build();
+        List<IngredientDTO> allIngredients = ingredientFacade.getAllIngredients();
+        return Response.ok().entity(GSON.toJson(allIngredients)).build();
     }
 
     @POST

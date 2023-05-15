@@ -21,15 +21,16 @@ public class RecipeDTO {
     private String name;
     private String description;
     private String userName;
-    private List<IngredientDTO> ingredients = new ArrayList<>();
+    private List<IngredientDTO> ingredients;
 
     public RecipeDTO(Recipe re) {
-        if(re.getId() != null)
+        if (re.getId() != null)
             this.id = re.getId();
         this.name = re.getName();
         this.description = re.getDescription();
         this.userName = re.getUser().getUserName();
-        for (Ingredient i : re.getIngredients()){
+        this.ingredients = new ArrayList<>();
+        for (Ingredient i : re.getIngredients()) {
             this.ingredients.add(new IngredientDTO(i));
         }
     }
@@ -48,7 +49,7 @@ public class RecipeDTO {
     public void setIngredients(List<IngredientDTO> ingredients) {
         this.ingredients = ingredients;
     }
-    public long getId() { return id; }
+    public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

@@ -12,6 +12,7 @@ public class ReviewDTO {
     private String userName;
 
 
+
     public ReviewDTO() {
     }
 
@@ -26,6 +27,9 @@ public class ReviewDTO {
             this.id = rm.getId();
         this.name = rm.getName();
         this.description = rm.getDescription();
+
+        this.userName = rm.getUser().getUserName();
+
     }
 
 
